@@ -5,10 +5,11 @@ export default function DeadList() {
   const [dead, setDead] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ pseudo: "", classe: "", niveau: "" });
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  // Charger les morts depuis ton API
+  // Charger les morts depuis API
   useEffect(() => {
-    fetch("http://localhost:3000/api/dead")
+    fetch(`${API_URL}/dead`)
       .then((res) => res.json())
       .then((data) => setDead(data));
   }, []);
@@ -16,7 +17,7 @@ export default function DeadList() {
   // Ajouter un mort
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/dead", {
+    const res = await fetch(`${API_URL}/dead`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

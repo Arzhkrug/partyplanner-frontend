@@ -22,7 +22,7 @@ import {
   GiMusicSpell,
 } from "react-icons/gi";
 
-const API_URL = "http://localhost:3000/api"; // adapte si backend déployé
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function EventDetail() {
   const { id } = useParams(); // récupère l'id depuis l'URL
@@ -36,7 +36,7 @@ export default function EventDetail() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/events/${id}`);
+        const res = await fetch(`${API_URL}/events/${id}`);
         if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
         const data = await res.json();
         console.log("Event récupéré:", data);

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaHourglassHalf, FaBeer } from "react-icons/fa";
 import { GiCharacter } from "react-icons/gi";
+
 export default function EventList({ events }) {
   return (
     <div className="space-y-4">
